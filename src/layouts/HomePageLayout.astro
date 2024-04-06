@@ -1,0 +1,23 @@
+---
+import Navbar from "../components/Navbar"
+import Footer from "../components/Footer"
+import "@fontsource/inter"
+const { url } = Astro.props;
+---
+
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+</head>
+<body>
+    <Navbar urlx={url} />
+    <slot />
+    <Footer />
+</body>
+</html>

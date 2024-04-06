@@ -1,0 +1,62 @@
+---
+const allStacks = await Astro.glob("../content/tech-stacks/*.md")
+const allSocials = await Astro.glob("../content/contacts/*.md")
+const allExperience = await Astro.glob("../content/experiences/*.md")
+import HomePageLayout from "../layouts/HomePageLayout.astro"
+import TechStack from "../layouts/TechStack.astro"
+import About from "../components/About"
+import { Image } from "astro:assets";
+import Contact from "../layouts/Contact.astro"
+import "../styles/global.css"
+import Card from "../components/contact/Card"
+import Experience from "../layouts/Experience.astro"
+import ExperienceCard from "../components/experience/ExperienceCard"
+
+---
+
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+		<title>Portfolio</title>
+	</head>
+	<body>
+		<HomePageLayout url="Portfolio">
+			<About />
+			<TechStack>
+				{
+					allStacks.map((stack) => (
+						<div class="w-[25rem] h-[15rem] rounded-xl bg-slate-100 flex flex-col justify-around items-center">
+							<Image src={"/icons/" + stack.frontmatter.icon + ".svg"} alt="tech stack icon" width="130" height="130"/>
+							<h1 class="text-4xl">{stack.frontmatter.name}</h1>
+						</div>
+					))
+				}
+			</TechStack>
+			<Experience>
+				{
+					allExperience.map((experience) => (
+						<ExperienceCard roleName={experience.frontmatter.roleName} logo={experience.frontmatter.logo} description={experience.frontmatter.description} exploreUrl={experience.frontmatter.exploreUrl} startDate={experience.frontmatter.startDate} endDate={experience.frontmatter.endDate} />
+					))
+				}
+			</Experience>
+			<Contact>
+				<p class="text-slate-700 text-xl leading-8 mb-[2rem]">
+					I'm always open to new opportunities and collaborations. Whether you have a project in mind or just want to chat about the latest developments in tech, feel free to reach out.
+			
+				</p>
+				<div class="grid grid-cols-4 gap-10 mt-[8rem] mb-[2rem]	">
+
+					{
+						allSocials.map((social) =>(
+							
+							<Card icon={social.frontmatter.icon} name={social.frontmatter.name} url={social.frontmatter.url} />
+							))
+					}
+				</div>
+			</Contact>
+		</HomePageLayout>
+	</body>
+</html>
