@@ -28,14 +28,14 @@ import ExperienceCard from "../components/experience/ExperienceCard"
 			<TechStack>
 				{
 					allStacks.map((stack) => (
-						<div class="w-[25rem] h-[15rem] rounded-xl bg-slate-100 flex flex-col justify-around items-center">
-							<Image src={"/icons/" + stack.frontmatter.icon + ".svg"} alt="tech stack icon" width="130" height="130"/>
+						<div class="w-[20rem] sm:w-[25rem] md:w-[20rem] lg:w-[25rem] h-[15rem] rounded-xl bg-slate-100 flex flex-col justify-around items-center">
+							<Image src={"/techStack/" + stack.frontmatter.icon + ".svg"} alt="tech stack icon" width="130" height="130"/>
 							<h1 class="text-4xl">{stack.frontmatter.name}</h1>
 						</div>
 					))
 				}
 			</TechStack>
-			<Experience>
+			<Experience>	
 				{
 					allExperience.map((experience) => (
 						<ExperienceCard roleName={experience.frontmatter.roleName} logo={experience.frontmatter.logo} description={experience.frontmatter.description} exploreUrl={experience.frontmatter.exploreUrl} startDate={experience.frontmatter.startDate} endDate={experience.frontmatter.endDate} />
@@ -47,7 +47,7 @@ import ExperienceCard from "../components/experience/ExperienceCard"
 					I'm always open to new opportunities and collaborations. Whether you have a project in mind or just want to chat about the latest developments in tech, feel free to reach out.
 			
 				</p>
-				<div class="grid grid-cols-4 gap-10 mt-[8rem] mb-[2rem]	">
+				<div class="grid grid-cols-2 md:grid-cols-4 gap-10 mt-[8rem] mb-[2rem]	">
 
 					{
 						allSocials.map((social) =>(
