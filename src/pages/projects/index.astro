@@ -9,7 +9,7 @@ import "../../styles/global.css"
     {
         allProjects.map((project) => (
             <div class="w-[80%] m-auto my-[5rem]">
-                <ProjectCard title={project.frontmatter.title} description={project.frontmatter.description} image={project.frontmatter.image} codebaseUrl={project.frontmatter.codebaseUrl} projectUrl={project.frontmatter.projectUrl} client:load />
+                <ProjectCard title={project.frontmatter.title} description={project.frontmatter.description} image={project.frontmatter.image} codebaseUrl={project.frontmatter.codebaseUrl} projectUrl={project.frontmatter.projectUrl} videoUrl={project.frontmatter.videoUrl} client:load />
             </div>
         ))
     }

@@ -1,4 +1,4 @@
 ---
-name: Python
-icon: python
+name: "Python"
+icon: "python"
 ---

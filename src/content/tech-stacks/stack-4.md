@@ -1,4 +1,4 @@
 ---
-name: JavaScript
-icon: javascript
+name: "MongoDB"
+icon: "mongodb"
 ---

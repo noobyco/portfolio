@@ -1,4 +1,4 @@
 ---
-name: "React.js"
-icon: "reactjs"
+name: "JavaScript"
+icon: "javascript"
 ---
