@@ -4,8 +4,12 @@ const About = () => {
     return (
 
             <div>
-                <div className="mt-[6rem] sm:w-[80%] mx-[2rem] mb-[10rem]">
-                    <h1 className="text-6xl sm:text-8xl lg:text-9xl font-bold tracking-wide">Full Stack Developer.</h1>
+                <div className="mt-[5rem] sm:w-[80%] mx-[2rem] mb-[10rem]">
+                    <h1 className="flex flex-col text-6xl sm:text-8xl lg:text-9xl font-bold tracking-wide">
+                        <span>Full</span>
+                        <span>Stack</span>
+                        <span>Developer</span>
+                    </h1>
                     <p className="my-[3rem] text-slate-700 text-2xl leading-[2.5rem]">
                         Hey there! 👋 Myself <span className="text-slate-800 font-semibold">Shekh Md Moinuddin</span> a young tech enthusiast and a final-year undergrad student in Information Science and Engineering.
                     </p>

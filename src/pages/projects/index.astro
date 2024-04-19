@@ -1,7 +1,16 @@
 ---
+const allProjects = await Astro.glob("../../content/projects/*.md")
 import HomePageLayout from "../../layouts/HomePageLayout.astro"
+import ProjectCard from "../../components/project/ProjectCard"
+import "../../styles/global.css"
 ---
 
 <HomePageLayout url="Projects">
-    <h1>Projects</h1>
+    {
+        allProjects.map((project) => (
+            <div class="w-[80%] m-auto my-[5rem]">
+                <ProjectCard title={project.frontmatter.title} description={project.frontmatter.description} image={project.frontmatter.image} codebaseUrl={project.frontmatter.codebaseUrl} projectUrl={project.frontmatter.projectUrl} client:load />
+            </div>
+        ))
+    }
 </HomePageLayout>
