@@ -3,7 +3,8 @@
 import { GiFastBackwardButton } from "react-icons/gi";
 import { useState, useEffect} from "react";
 import { FaHamburger } from "react-icons/fa";
-import { GiCrossMark } from "react-icons/gi";
+import { RxCross1 } from "react-icons/rx";
+
 
 const Navbar = (props) => {
     const [btnState, setBtnState] = useState(false);
@@ -27,16 +28,16 @@ const Navbar = (props) => {
 
             <div className="z-[50] h-[2rem] w-fit sm:hidden mr-[3rem]">
                 <button onClick={ ()=> setBtnState((prevStateBtn) => !prevStateBtn)} className="cursor-pointer">
-                    { btnState ? (<GiCrossMark size={30} color={"black"} />) : (<FaHamburger size={30}/>)}
+                    { btnState ? (<RxCross1 size={30} color={"black"} />) : (<FaHamburger size={30}/>)}
                 </button>
             </div>
             {btnState && 
             
-            <div className="absolute top-0 left-0 h-screen w-screen flex flex-col justify-center gap-10 items-center text-4xl font-semibold bg-[#4477CE]">
-                <a className="hover:text-[#4477CE] tracking-wide text-black" href="/open-source">Open Source</a>
-                <a className="hover:text-[#4477CE] tracking-wide text-black" href="/projects">Projects</a>
-                <a className="hover:text-[#4477CE] tracking-wide text-black" href="https://noobyco.hashnode.dev" target="_blank">Blogs</a>
-                <a className="hover:text-[#4477CE] tracking-wide text-black" href="/talks">Talks</a>
+            <div className="absolute top-0 left-0 h-screen w-screen flex flex-col justify-center gap-16 items-center text-4xl font-semibold bg-[#4477CE]">
+                <a className="tracking-wide text-black" href="/open-source">Open Source</a>
+                <a className="tracking-wide text-black" href="/projects">Projects</a>
+                <a className="tracking-wide text-black" href="https://noobyco.hashnode.dev" target="_blank">Blogs</a>
+                <a className="tracking-wide text-black" href="/talks">Talks</a>
             </div>
             }
         </nav>
