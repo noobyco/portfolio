@@ -1,7 +1,30 @@
 ---
+const allTalks = await Astro.glob("../../content/talks/*.md")
 import HomePageLayout from "../../layouts/HomePageLayout.astro"
+import TalkCard from "../../components/talk/TalkCard" 
+import "../../styles/global.css"
 ---
 
-<HomePageLayout url="Talks">
-    <h1>Talks</h1>
-</HomePageLayout>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="viewport" content="width=device-width" />
+		<meta name="generator" content={Astro.generator} />
+		<title>shekh md moinuddin</title>
+	</head>
+	<body>
+        <HomePageLayout url="Talks">
+            
+                <div class="w-[80%] m-auto my-[5rem]">
+                    {
+                        allTalks.map((talk)=> (
+                            <TalkCard image={talk.frontmatter.image} title={talk.frontmatter.title} blogUrl={talk.frontmatter.blogUrl} videoUrl={talk.frontmatter.videoUrl} postUrl={talk.frontmatter.postUrl} pptUrl={talk.frontmatter.pptUrl} />
+                        ))
+                    }
+                </div>
+                
+            
+        </HomePageLayout>
+	</body>
+</html>
