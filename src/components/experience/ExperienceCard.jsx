@@ -1,3 +1,5 @@
+import { FaAngleRight } from "react-icons/fa6";
+
 const ExperienceCard = (props) => {
     return (
         <div className="w-[90%] m-auto p-[2rem] bg-slate-100 mt-[5rem] rounded-xl">
@@ -10,8 +12,9 @@ const ExperienceCard = (props) => {
             </div>
             <div className="mt-[2rem] flex gap-10 flex-col items-start">
                 <p className="text-slate-700 text-xl leading-8">{props.description}</p>
-                <button className="text-md ring ring-white p-2 rounded-md font-semibold">
-                    <a href={props.exploreUrl} target="_blank">Explore</a>
+                <button className="text-md border-2 border-grey-900 p-1 flex items-center justify-between rounded">
+                    <a href={props.exploreUrl} className="text-md font-semibold" target="_blank">Explore {<FaAngleRight className="inline"/>}</a>
+                    
                 </button>
             </div>
         </div>
