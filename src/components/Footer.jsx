@@ -1,8 +1,9 @@
 const Footer = () => {
     return (
-            <footer className="stickey bottom-0 w-full">
-                <p className="text-center mb-[3rem] text-md">&copy; 2024 All rights reserved.</p>
-            </footer>
+            <div className="bg-black/5 p-6 text-center mt-auto w-full">
+                <span>© 2024 Copyright - </span>
+                <a className="font-semibold uppercase" href="https://twitter.com/noobyco" target="_blank">shekh md moinuddin</a>
+            </div>
     );
 }
 

@@ -1,5 +1,6 @@
 ---
 import HomePageLayout from "../../layouts/HomePageLayout.astro"
+import OpenSourceCard from "../../components/openSource/OpenSourceCard"
 import "../../styles/global.css"
 ---
 
@@ -13,7 +14,9 @@ import "../../styles/global.css"
 	</head>
 	<body>
         <HomePageLayout url="Open Source">
-            <h1>Open source</h1>
+			<div class="w-[80%] m-auto mt-[2rem]">
+				<OpenSourceCard client:load />
+			</div>
         </HomePageLayout>
 	</body>
 </html>

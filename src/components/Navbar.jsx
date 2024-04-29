@@ -1,10 +1,8 @@
 'use client'
-
 import { GiFastBackwardButton } from "react-icons/gi";
 import { useState, useEffect} from "react";
 import { FaHamburger } from "react-icons/fa";
 import { RxCross1 } from "react-icons/rx";
-
 
 const Navbar = (props) => {
     const [btnState, setBtnState] = useState(false);

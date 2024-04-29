@@ -15,7 +15,7 @@ const { url } = Astro.props;
         }
     </style>
 </head>
-<body>
+<body class="min-h-[100vh]">
     <Navbar urlx={url} client:load />
     <slot />
     <Footer />
