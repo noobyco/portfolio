@@ -1,6 +1,7 @@
 ---
 import Navbar from "../components/Navbar"
 import Footer from "../components/Footer"
+import Banner from "../components/Banner"
 import "@fontsource/inter"
 const { url } = Astro.props;
 ---
@@ -16,6 +17,7 @@ const { url } = Astro.props;
     </style>
 </head>
 <body class="min-h-[100vh]">
+    <Banner />
     <Navbar urlx={url} client:load />
     <slot />
     <Footer />
