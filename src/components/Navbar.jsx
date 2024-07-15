@@ -1,5 +1,4 @@
 'use client'
-import { GiFastBackwardButton } from "react-icons/gi";
 import { useState, useEffect} from "react";
 import { FaHamburger } from "react-icons/fa";
 import { RxCross1 } from "react-icons/rx";
@@ -8,11 +7,9 @@ const Navbar = (props) => {
     const [btnState, setBtnState] = useState(false);
 
     return (
-        <nav className="flex h-[5rem] w-full justify-between items-center border-solid border-b-4 border-slate-200">
-            <div className="flex justify-center items-center ml-[2rem]">
-                <a href="/">
-                    <GiFastBackwardButton size="2rem" color="#4477CE" className="mr-[2rem] cursor-pointer"/>
-                </a>
+        <nav className="flex h-[5rem] w-full justify-between items-center">
+            <div className="flex justify-center items-center ml-[2rem] space-x-5">
+                <a href="/"><img src="/favicon.svg" width="25"></img></a>
                 <a className="font-semibold text-xl text-slate-600"> / {props.urlx}</a>
 
             </div>
@@ -31,11 +28,11 @@ const Navbar = (props) => {
             </div>
             {btnState && 
             
-            <div className="absolute top-0 left-0 h-screen w-screen flex flex-col justify-center gap-16 items-center text-4xl font-semibold bg-[#4477CE]">
-                <a className="tracking-wide text-black" href="/open-source">Open Source</a>
-                <a className="tracking-wide text-black" href="/projects">Projects</a>
-                <a className="tracking-wide text-black" href="https://noobyco.hashnode.dev" target="_blank">Blogs</a>
-                <a className="tracking-wide text-black" href="/talks">Talks</a>
+            <div className="absolute top-0 left-0 h-screen w-screen flex flex-col justify-center gap-16 items-center text-4xl font-semibold bg-gradient-to-bl from-blue-800 to-black">
+                <a className="tracking-wide text-[#F5F5F5]" href="/open-source">Open Source</a>
+                <a className="tracking-wide text-[#F5F5F5]" href="/projects">Projects</a>
+                <a className="tracking-wide text-[#F5F5F5]" href="https://noobyco.hashnode.dev" target="_blank">Blogs</a>
+                <a className="tracking-wide text-[#F5F5F5]" href="/talks">Talks</a>
             </div>
             }
         </nav>

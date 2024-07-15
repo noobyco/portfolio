@@ -27,7 +27,7 @@ import ExperienceCard from "../components/experience/ExperienceCard"
 			<TechStack>
 				{
 					allStacks.map((stack) => (
-						<div class="w-[20rem] sm:w-[25rem] md:w-[20rem] lg:w-[25rem] h-[15rem] rounded-xl bg-slate-100 flex flex-col justify-around items-center">
+						<div class="w-[20rem] sm:w-[25rem] md:w-[20rem] lg:w-[25rem] h-[15rem] rounded-xl bg-[#F5F5F5] shadow-md hover:shadow-2xl flex flex-col justify-around items-center">
 							<Image src={"/techStack/" + stack.frontmatter.icon + ".svg"} alt="tech stack icon" width="130" height="130"/>
 							<h1 class="text-4xl">{stack.frontmatter.name}</h1>
 						</div>

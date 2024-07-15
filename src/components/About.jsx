@@ -1,15 +1,14 @@
 const About = () => {
     return (
-                <div className="m-auto w-[80%] mt-[10rem] mb-[10rem]">
-                    <div className="flex flex-col items-center justify-around lg:flex-row">
-                        <div className="flex flex-col items-center justify-center mb-[5rem]">
-                            <img className="w-[12rem] h-[12rem] -z-[50] object-cover rounded-xl overflow-hidden ring-4 ring-grey-300 p-1 sm:w-[20rem] sm:h-[20rem]" src="/profile.jpg"/>
+                <div className="m-auto w-[80%] mt-[3rem] mb-[10rem]">
+                    
+                    <div className="flex flex-col items-center justify-start">
+                        <div className="flex flex-col items-center justify-center mb-[3rem]">
+                            <img className="-z-[50] object-cover rounded-xl overflow-hidden p-1 w-[15rem] sm:w-[20rem] lg:w-[24rem]" src="/profilex.png"/>
                         </div>
                         <div>
-                            <h1 className="flex flex-col text-2xl sm:text-4xl lg:text-5xl tracking-wide mb-5 text-center uppercase">Shekh Md Moinuddin</h1>
-                            <h1 className="flex flex-col text-xl sm:text-3xl lg:text-4xl tracking-wide text-slate-700 text-center">
-                                Full Stack Developer
-                            </h1>
+                            <h1 className="text-4xl sm:text-5xl lg:text-7xl tracking-wide mb-3 text-center uppercase text-transparent bg-clip-text bg-gradient-to-tl from-blue-800 to-black font-bold">Shekh Md Moinuddin</h1>
+                            
                         </div>
                     </div>
 
