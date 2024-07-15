@@ -50,7 +50,7 @@ const ProjectCard = (props) => {
                             href={props.videoUrl} 
                             target="_blank" 
                             className="hover:bg-[#F5F5F5] rounded-md font-bold px-4 py-2 m-1 inline-flex items-center">
-                            Video <MdArrowForwardIost className="ml-1" />
+                            Video <MdArrowForwardIos className="ml-1" />
                         </a>
                     )}
                 </div>
