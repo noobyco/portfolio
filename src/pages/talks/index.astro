@@ -16,7 +16,7 @@ import "../../styles/global.css"
 	<body>
         <HomePageLayout url="Talks">
             
-            <div class="w-[80%] m-auto my-[5rem] grid grid-cols-1 lg:grid-cols-2">
+            <div class="w-[95%] m-auto my-[5rem] grid grid-cols-1 lg:grid-cols-2">
                 {
                     allTalks.map((talk)=> (
                             <TalkCard image={talk.frontmatter.image} title={talk.frontmatter.title} blogUrl={talk.frontmatter.blogUrl} videoUrl={talk.frontmatter.videoUrl} postUrl={talk.frontmatter.postUrl} pptUrl={talk.frontmatter.pptUrl} client:load />

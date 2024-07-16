@@ -28,7 +28,7 @@ const Navbar = (props) => {
             </div>
             {btnState && 
             
-            <div className="absolute top-0 left-0 h-screen w-screen flex flex-col justify-center gap-16 items-center text-4xl font-semibold bg-gradient-to-bl from-blue-800 to-black">
+            <div className="z-[30] absolute top-0 left-0 h-screen w-screen flex flex-col justify-center gap-16 items-center text-4xl font-semibold bg-gradient-to-bl from-blue-800 to-black">
                 <a className="tracking-wide text-[#F5F5F5]" href="/open-source">Open Source</a>
                 <a className="tracking-wide text-[#F5F5F5]" href="/projects">Projects</a>
                 <a className="tracking-wide text-[#F5F5F5]" href="https://noobyco.hashnode.dev" target="_blank">Blogs</a>

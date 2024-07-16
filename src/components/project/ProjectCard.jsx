@@ -7,7 +7,7 @@ const ProjectCard = (props) => {
     const truncatedDescription = props.description.slice(0, descContentLength);
 
     return (
-        <div className="mb-12 p-4 bg-white shadow-2xl rounded-lg max-w-sm mx-auto transition-transform transform hover:scale-105">
+        <div className="mb-12 p-4 w-full bg-white shadow-2xl rounded-lg max-w-sm mx-auto transition-transform transform hover:scale-105">
             <img 
                 src={"/project/" + props.image} 
                 className="w-full h-48 object-cover rounded-t-lg mb-4" 

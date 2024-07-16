@@ -1,7 +1,7 @@
 import { MdArrowForwardIos } from "react-icons/md";
 const TalkCard = (props) => {
     return (
-        <div className="mb-12 p-4 w-[30rem] bg-white shadow-2xl rounded-lg max-w-sm mx-auto transition-transform transform hover:scale-105">
+        <div className="mb-12 p-4 w-full bg-white shadow-2xl rounded-lg max-w-sm mx-auto transition-transform transform hover:scale-105">
             <img 
                 src={"/talks/" + props.image} 
                 className="w-full h-48 object-cover rounded-t-lg mb-4" 
