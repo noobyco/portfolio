@@ -1,7 +1,6 @@
 ---
 import Navbar from "../components/Navbar"
 import Footer from "../components/Footer"
-import Banner from "../components/Banner"
 import "@fontsource/inter"
 const { url } = Astro.props;
 ---
@@ -10,16 +9,10 @@ const { url } = Astro.props;
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <style>
-        body {
-            font-family: 'Inter', sans-serif;
-        }
-    </style>
 </head>
-<body class="min-h-[100vh]">
-    <Banner />
+<body class="site-shell">
     <Navbar urlx={url} client:load />
-    <slot />
+    <main id="content"><slot /></main>
     <Footer />
 </body>
 </html>

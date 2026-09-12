@@ -1,7 +1,12 @@
 ---
 const allStacks = await Astro.glob("../content/tech-stacks/*.md")
 const allSocials = await Astro.glob("../content/contacts/*.md")
-const allExperience = await Astro.glob("../content/experiences/*.md")
+type ContentEntry = { frontmatter: Record<string, string> }
+const stackCategories = ["Development", "Operations", "Hardware"]
+const categorizedStacks = stackCategories.map((category) => ({
+	category,
+	stacks: (allStacks as ContentEntry[]).filter((stack: ContentEntry) => stack.frontmatter.category === category),
+}))
 import HomePageLayout from "../layouts/HomePageLayout.astro"
 import TechStack from "../layouts/TechStack.astro"
 import About from "../components/About"
@@ -9,8 +14,6 @@ import { Image } from "astro:assets";
 import Contact from "../layouts/Contact.astro"
 import "../styles/global.css"
 import Card from "../components/contact/Card"
-import Experience from "../layouts/Experience.astro"
-import ExperienceCard from "../components/experience/ExperienceCard"
 ---
 
 <html lang="en">
@@ -26,34 +29,42 @@ import ExperienceCard from "../components/experience/ExperienceCard"
 			<About />
 			<TechStack>
 				{
-					allStacks.map((stack) => (
-						<div class="w-[20rem] sm:w-[25rem] md:w-[20rem] lg:w-[25rem] h-[15rem] rounded-xl bg-[#F5F5F5] shadow-md hover:shadow-2xl flex flex-col justify-around items-center">
-							<Image src={"/techStack/" + stack.frontmatter.icon + ".svg"} alt="tech stack icon" width="130" height="130"/>
-							<h1 class="text-4xl">{stack.frontmatter.name}</h1>
+					categorizedStacks.map(({ category, stacks }) => (
+						<div class="stack-category">
+							<div class="stack-category-heading">
+								<p class="section-kicker">Toolkit / {category}</p>
+								<span>{stacks.length} tools</span>
+							</div>
+							<div class="stack-grid">
+								{stacks.map((stack: ContentEntry) => (
+									<div class="stack-card">
+										{stack.frontmatter.icon ? (
+											<Image src={"/techStack/" + stack.frontmatter.icon + ".svg"} alt={stack.frontmatter.name + " icon"} width="130" height="130"/>
+										) : (
+											<span class="stack-icon-fallback" aria-hidden="true">{stack.frontmatter.name.slice(0, 2).toUpperCase()}</span>
+										)}
+										<h1>{stack.frontmatter.name}</h1>
+									</div>
+								))}
+							</div>
 						</div>
 					))
 				}
 			</TechStack>
-			<Experience>	
-				{
-					allExperience.map((experience) => (
-						<ExperienceCard roleName={experience.frontmatter.roleName} logo={experience.frontmatter.logo} description={experience.frontmatter.description} exploreUrl={experience.frontmatter.exploreUrl} startDate={experience.frontmatter.startDate} endDate={experience.frontmatter.endDate} />
-					))
-				}
-			</Experience>
 			<Contact>
-				<p class="text-slate-700 text-xl leading-8 mb-[2rem] text-center">
+					<p class="contact-intro">
 					I'm always open to new opportunities and collaborations. Whether you have a project in mind or just want to chat about the latest developments in tech, feel free to reach out.
 			
 				</p>
-				<div class="grid grid-cols-2 md:grid-cols-4 gap-10 mt-[8rem] mb-[2rem]	">
+					<div class="contact-grid">
 
 					{
-						allSocials.map((social) =>(
+						(allSocials as ContentEntry[]).filter((social: ContentEntry) => social.frontmatter.name !== "Instagram").map((social: ContentEntry) =>(
 							
 							<Card icon={social.frontmatter.icon} name={social.frontmatter.name} url={social.frontmatter.url} />
 							))
 					}
+					<Card icon="mail" name="moinuddinshekh2@gmail.com" url="mailto:moinuddinshekh2@gmail.com" />
 				</div>
 			</Contact>
 		</HomePageLayout>
