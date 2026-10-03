@@ -2,7 +2,7 @@
 const allStacks = await Astro.glob("../content/tech-stacks/*.md")
 const allSocials = await Astro.glob("../content/contacts/*.md")
 type ContentEntry = { frontmatter: Record<string, string> }
-const stackCategories = ["Development", "Operations", "Hardware"]
+const stackCategories = ["Development", "Operations", "AI / Agents", "Hardware"]
 const categorizedStacks = stackCategories.map((category) => ({
 	category,
 	stacks: (allStacks as ContentEntry[]).filter((stack: ContentEntry) => stack.frontmatter.category === category),
