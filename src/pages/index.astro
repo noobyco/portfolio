@@ -1,72 +1,81 @@
 ---
-const allStacks = await Astro.glob("../content/tech-stacks/*.md")
-const allSocials = await Astro.glob("../content/contacts/*.md")
-type ContentEntry = { frontmatter: Record<string, string> }
-const stackCategories = ["Development", "Operations", "AI / Agents", "Hardware"]
+import { SITE_NAME } from "../site.config";
+const allStacks = await Astro.glob("../content/tech-stacks/*.md");
+const allSocials = await Astro.glob("../content/contacts/*.md");
+type ContentEntry = { frontmatter: Record<string, string> };
+const stackCategories = ["Development", "Operations", "AI / Agents", "Hardware"];
 const categorizedStacks = stackCategories.map((category) => ({
-	category,
-	stacks: (allStacks as ContentEntry[]).filter((stack: ContentEntry) => stack.frontmatter.category === category),
-}))
-import HomePageLayout from "../layouts/HomePageLayout.astro"
-import TechStack from "../layouts/TechStack.astro"
-import About from "../components/About"
+  category,
+  stacks: (allStacks as ContentEntry[]).filter(
+    (stack: ContentEntry) => stack.frontmatter.category === category,
+  ),
+}));
+import HomePageLayout from "../layouts/HomePageLayout.astro";
+import TechStack from "../layouts/TechStack.astro";
+import About from "../components/About";
 import { Image } from "astro:assets";
-import Contact from "../layouts/Contact.astro"
-import "../styles/global.css"
-import Card from "../components/contact/Card"
+import Contact from "../layouts/Contact.astro";
+import Card from "../components/contact/Card";
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>shekh md moinuddin</title>
-	</head>
-	<body>
-		<HomePageLayout url="Portfolio">
-			<About />
-			<TechStack>
-				{
-					categorizedStacks.map(({ category, stacks }) => (
-						<div class="stack-category">
-							<div class="stack-category-heading">
-								<p class="section-kicker">Toolkit / {category}</p>
-								<span>{stacks.length} tools</span>
-							</div>
-							<div class="stack-grid">
-								{stacks.map((stack: ContentEntry) => (
-									<div class="stack-card">
-										{stack.frontmatter.icon ? (
-											<Image src={"/techStack/" + stack.frontmatter.icon + ".svg"} alt={stack.frontmatter.name + " icon"} width="130" height="130"/>
-										) : (
-											<span class="stack-icon-fallback" aria-hidden="true">{stack.frontmatter.name.slice(0, 2).toUpperCase()}</span>
-										)}
-										<h1>{stack.frontmatter.name}</h1>
-									</div>
-								))}
-							</div>
-						</div>
-					))
-				}
-			</TechStack>
-			<Contact>
-					<p class="contact-intro">
-					I'm always open to new opportunities and collaborations. Whether you have a project in mind or just want to chat about the latest developments in tech, feel free to reach out.
-			
-				</p>
-					<div class="contact-grid">
-
-					{
-						(allSocials as ContentEntry[]).filter((social: ContentEntry) => social.frontmatter.name !== "Instagram").map((social: ContentEntry) =>(
-							
-							<Card icon={social.frontmatter.icon} name={social.frontmatter.name} url={social.frontmatter.url} />
-							))
-					}
-					<Card icon="mail" name="moinuddinshekh2@gmail.com" url="mailto:moinuddinshekh2@gmail.com" />
-				</div>
-			</Contact>
-		</HomePageLayout>
-	</body>
-</html>
+<HomePageLayout url="Portfolio" title={SITE_NAME}>
+  <About />
+  <TechStack>
+    {
+      categorizedStacks.map(({ category, stacks }) => (
+        <div class="stack-category">
+          <div class="stack-category-heading">
+            <p class="section-kicker">Toolkit / {category}</p>
+            <span>{stacks.length} tools</span>
+          </div>
+          <div class="stack-grid">
+            {stacks.map((stack: ContentEntry) => (
+              <div class="stack-card">
+                {stack.frontmatter.icon ? (
+                  <Image
+                    src={"/techStack/" + stack.frontmatter.icon + ".svg"}
+                    alt={stack.frontmatter.name + " icon"}
+                    width="130"
+                    height="130"
+                  />
+                ) : (
+                  <span class="stack-icon-fallback" aria-hidden="true">
+                    {stack.frontmatter.name.slice(0, 2).toUpperCase()}
+                  </span>
+                )}
+                <h1>{stack.frontmatter.name}</h1>
+              </div>
+            ))}
+          </div>
+        </div>
+      ))
+    }
+  </TechStack>
+  <Contact>
+    <p class="contact-intro">
+      I'm always open to new opportunities and collaborations. Whether you have
+      a project in mind or just want to chat about the latest developments in
+      tech, feel free to reach out.
+    </p>
+    <div class="contact-grid">
+      {
+        (allSocials as ContentEntry[])
+          .filter(
+            (social: ContentEntry) => social.frontmatter.name !== "Instagram",
+          )
+          .map((social: ContentEntry) => (
+            <Card
+              icon={social.frontmatter.icon}
+              name={social.frontmatter.name}
+              url={social.frontmatter.url}
+            />
+          ))
+      }
+      <Card
+        icon="mail"
+        name="moinuddinshekh2@gmail.com"
+        url="mailto:moinuddinshekh2@gmail.com"
+      />
+    </div>
+  </Contact>
+</HomePageLayout>

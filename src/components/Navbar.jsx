@@ -1,5 +1,6 @@
 "use client";
 import { useState } from "react";
+import { SITE_INITIALS } from "../site.config";
 import { RxCross1 } from "react-icons/rx";
 import { HiOutlineMenuAlt3 } from "react-icons/hi";
 const Navbar = (props) => {
@@ -9,7 +10,7 @@ const Navbar = (props) => {
     <nav className="site-nav">
       <div className="brand-lockup">
         <a href="/" className="brand-mark">
-          SM
+          {SITE_INITIALS}
         </a>
         <a className="crumb" href="/">
           / {props.urlx}

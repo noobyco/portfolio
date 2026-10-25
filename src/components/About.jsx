@@ -1,28 +1,39 @@
+import { HERO_NAME_LINES, SITE_NAME } from "../site.config";
+
 const About = () => {
   return (
     <section className="about-section section-wrap">
       <div className="hero-grid">
         <div className="hero-copy">
           <p className="eyebrow">Portfolio / 2024—present</p>
-          <h1>
-            Shekh Md
-            <br />
-            <span>Moinuddin</span>
-          </h1>
+          <div className="hero-title-row">
+            <h1>
+              {HERO_NAME_LINES[0]}
+              <br />
+              <span>{HERO_NAME_LINES[1]}</span>
+            </h1>
+            <div className="hero-portrait">
+              <img src="/profilex.png" alt={SITE_NAME} />
+              <span className="portrait-label">
+                Development
+                <br />& Operations
+              </span>
+            </div>
+          </div>
           <p className="hero-summary">
-            I ship code, run it in prod, and love to interact with amazing
-            people in tech.
+            <span className="hero-summary-line">
+              I <span className="hl hl-marker-acid">ship code</span>,
+              run it in <span className="hl hl-coral">prod</span>,
+            </span>
+            <span className="hero-summary-line">
+              and love to interact with{" "}
+              <span className="hl hl-marker">amazing people</span> in{" "}
+              <span className="hl hl-marker-acid">tech</span>.
+            </span>
           </p>
           <a className="lime-link" href="#about">
             Scroll to explore <span>↓</span>
           </a>
-        </div>
-        <div className="hero-portrait">
-          <img src="/profilex.png" alt="Shekh Md Moinuddin" />
-          <span className="portrait-label">
-            Development
-            <br />& Operations
-          </span>
         </div>
       </div>
 
@@ -30,7 +41,7 @@ const About = () => {
         <p className="section-kicker">01 / About</p>
         <div>
           <p>
-            Hey there! 👋 I'm Shekh Md Moinuddin, a software engineer focused on
+            Hey there! 👋 I'm {SITE_NAME}, a software engineer focused on
             development and operations. I build intelligent software powered by
             AI models and deploy it to production infrastructure — owning the
             full lifecycle from code to deployment to runtime reliability.

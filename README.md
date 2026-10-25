@@ -1,4 +1,4 @@
-# Shekh Md Moinuddin — Portfolio
+# Shekh Muhammad Moinuddin — Portfolio
 
 ![Astro](https://img.shields.io/badge/Astro-FF5D01?logo=astro&logoColor=white)
 ![React](https://img.shields.io/badge/React-20232A?logo=react&logoColor=61DAFB)

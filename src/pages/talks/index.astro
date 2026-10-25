@@ -1,31 +1,30 @@
 ---
-const allTalks = await Astro.glob("../../content/talks/*.md")
-import HomePageLayout from "../../layouts/HomePageLayout.astro"
-import TalkCard from "../../components/talk/TalkCard" 
-import "../../styles/global.css"
+import { SITE_NAME } from "../../site.config";
+const allTalks = await Astro.glob("../../content/talks/*.md");
+import HomePageLayout from "../../layouts/HomePageLayout.astro";
+import TalkCard from "../../components/talk/TalkCard";
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>shekh md moinuddin</title>
-	</head>
-	<body>
-        <HomePageLayout url="Talks">
-            
-			<div class="listing-page">
-				<div class="section-heading"><p class="section-kicker">Talks / Notes</p><h1>Ideas worth sharing</h1></div>
-				<div class="listing-grid">
-                {
-                    allTalks.map((talk)=> (
-                            <TalkCard image={talk.frontmatter.image} title={talk.frontmatter.title} blogUrl={talk.frontmatter.blogUrl} videoUrl={talk.frontmatter.videoUrl} postUrl={talk.frontmatter.postUrl} pptUrl={talk.frontmatter.pptUrl} client:load />
-                        ))
-                }       
-				</div>
-            </div>  
-        </HomePageLayout>
-	</body>
-</html>
+<HomePageLayout url="Talks" title={SITE_NAME}>
+  <div class="listing-page">
+    <div class="section-heading">
+      <p class="section-kicker">Talks / Notes</p>
+      <h1>Ideas worth sharing</h1>
+    </div>
+    <div class="listing-grid">
+      {
+        allTalks.map((talk) => (
+          <TalkCard
+            image={talk.frontmatter.image}
+            title={talk.frontmatter.title}
+            blogUrl={talk.frontmatter.blogUrl}
+            videoUrl={talk.frontmatter.videoUrl}
+            postUrl={talk.frontmatter.postUrl}
+            pptUrl={talk.frontmatter.pptUrl}
+            client:load
+          />
+        ))
+      }
+    </div>
+  </div>
+</HomePageLayout>

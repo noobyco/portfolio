@@ -1,18 +1,30 @@
 ---
-import Navbar from "../components/Navbar"
-import Footer from "../components/Footer"
-import "@fontsource/inter"
-const { url } = Astro.props;
+import Navbar from "../components/Navbar";
+import Footer from "../components/Footer";
+import { SITE_NAME } from "../site.config";
+import "@fontsource/inter";
+import "../styles/global.css";
+
+interface Props {
+  url: string;
+  title?: string;
+}
+
+const { url, title = SITE_NAME } = Astro.props;
 ---
 
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-</head>
-<body class="site-shell">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <meta name="generator" content={Astro.generator} />
+    <title>{title}</title>
+  </head>
+  <body class="site-shell">
     <Navbar urlx={url} client:load />
     <main id="content"><slot /></main>
     <Footer />
-</body>
+  </body>
 </html>
