@@ -86,14 +86,11 @@ a {
 .about-section {
   padding: 72px 0 92px;
 }
-.hero-grid {
-  min-height: 0;
-}
-.hero-title-row {
-  display: flex;
-  align-items: flex-end;
-  gap: clamp(20px, 4vw, 56px);
-  flex-wrap: wrap;
+.hero-layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  align-items: start;
+  gap: 4px;
 }
 .eyebrow,
 .section-kicker {
@@ -104,21 +101,20 @@ a {
   letter-spacing: 0.08em;
   text-transform: uppercase;
 }
-.hero-title-row h1 {
-  margin: 28px 0;
-  flex: 1 1 12rem;
-  min-width: min(100%, 16rem);
-  font-size: clamp(4.5rem, 11vw, 9.8rem);
-  line-height: 0.84;
-  letter-spacing: -0.08em;
+.hero-copy h1 {
+  margin: 18px 0 8px;
+  min-width: 0;
+  font-size: clamp(2.45rem, 11vw, 3.5rem);
+  line-height: 0.86;
+  letter-spacing: -0.05em;
   font-weight: 600;
 }
-.hero-title-row h1 span {
+.hero-copy h1 span {
   color: var(--coral);
 }
 .hero-summary {
   max-width: min(520px, 100%);
-  margin: 8px 0 38px;
+  margin: 8px 0 0;
   color: var(--ink);
   font-size: clamp(1.25rem, 2.6vw, 1.85rem);
   font-weight: 500;
@@ -165,7 +161,9 @@ a {
 .lime-link {
   display: inline-flex;
   align-items: center;
+  justify-self: start;
   gap: 18px;
+  margin-top: 22px;
   font:
     500 12px "DM Mono",
     monospace;
@@ -182,17 +180,16 @@ a {
 }
 .hero-portrait {
   position: relative;
-  flex: 0 0 auto;
-  width: clamp(140px, 22vw, 220px);
-  margin: 28px 0;
+  width: clamp(150px, 46vw, 210px);
+  margin: 18px 0 0;
 }
 .hero-portrait img {
   display: block;
   width: 100%;
   aspect-ratio: 4 / 5;
   object-fit: cover;
+  object-position: center top;
   filter: grayscale(1) contrast(1.1);
-  border: 1px solid var(--ink);
 }
 .portrait-label {
   position: absolute;
@@ -577,6 +574,47 @@ a {
 .opensource-item svg {
   flex: 0 0 auto;
 }
+@media (min-width: 701px) {
+  .hero-layout {
+    grid-template-columns: minmax(0, 1fr) auto;
+    grid-template-areas:
+      "copy portrait"
+      "cta portrait";
+    align-items: center;
+    gap: 28px 32px;
+  }
+  .hero-copy {
+    grid-area: copy;
+  }
+  .hero-portrait {
+    grid-area: portrait;
+    width: clamp(180px, 28vw, 250px);
+    margin: 0;
+  }
+  .hero-layout > .lime-link {
+    grid-area: cta;
+    margin-top: 28px;
+  }
+  .hero-copy h1 {
+    margin: 22px 0 10px;
+    font-size: clamp(2.8rem, 4.8vw, 4.6rem);
+    letter-spacing: -0.06em;
+  }
+}
+@media (min-width: 1100px) {
+  .hero-layout {
+    align-items: end;
+    gap: clamp(28px, 4vw, 64px);
+  }
+  .hero-copy h1 {
+    margin: 28px 0 12px;
+    font-size: clamp(4.5rem, 4.6vw, 5.6rem);
+    letter-spacing: -0.08em;
+  }
+  .hero-portrait {
+    width: clamp(220px, 20vw, 280px);
+  }
+}
 @media (max-width: 700px) {
   .desktop-links {
     display: none;
@@ -608,17 +646,16 @@ a {
   .about-section {
     padding-top: 60px;
   }
-  .hero-grid,
   .section-rule,
   .section-heading {
     grid-template-columns: 1fr;
     gap: 28px;
   }
-  .hero-title-row h1 {
-    font-size: clamp(4rem, 19vw, 7rem);
-  }
-  .hero-portrait {
-    width: clamp(120px, 36vw, 180px);
+  .portrait-label {
+    bottom: 10px;
+    left: 10px;
+    padding: 6px;
+    font-size: 9px;
   }
   .about-copy p:not(.section-kicker) {
     font-size: 18px;
@@ -651,5 +688,13 @@ a {
   }
   .experience-card h1 {
     font-size: 18px;
+  }
+}
+@media (max-width: 420px) {
+  .hero-copy h1 {
+    font-size: clamp(2.15rem, 10vw, 2.7rem);
+  }
+  .hero-portrait {
+    width: clamp(136px, 42vw, 180px);
   }
 }
