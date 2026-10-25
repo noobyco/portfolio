@@ -11,8 +11,11 @@ function HangingBadge() {
   const bandRef = useRef(null);
   const jointRef = useRef(null);
   const mobileHookRef = useRef(null);
+  const handRef = useRef(null);
+  const hintToken = useRef(0);
   const [offset, setOffset] = useState({ x: 0, y: 0 });
   const [pulling, setPulling] = useState(false);
+  const [showHint, setShowHint] = useState(true);
 
   const applyOffset = (next) => {
     offsetRef.current = next;
@@ -39,8 +42,16 @@ function HangingBadge() {
           ax = mobileHookRef.current.x;
           ay = mobileHookRef.current.y;
         } else {
-          if (atRest) {
-            anchor.style.left = `${bx}px`;
+          const parent = anchor.offsetParent || band.parentElement;
+          if (atRest && parent) {
+            const parentBox = parent.getBoundingClientRect();
+            anchor.style.left = `${bx + window.scrollX - (parentBox.left + window.scrollX) - anchor.offsetWidth / 2}px`;
+            if (window.scrollY <= 1 || anchor.dataset.placed !== "1") {
+              const nav = document.querySelector(".site-nav");
+              const hookDocY = nav.offsetTop + nav.offsetHeight;
+              anchor.style.top = `${hookDocY - (parentBox.top + window.scrollY) - anchor.offsetHeight / 2}px`;
+              anchor.dataset.placed = "1";
+            }
           }
           const anchorBox = anchor.getBoundingClientRect();
           ax = anchorBox.left + anchorBox.width / 2;
@@ -56,6 +67,51 @@ function HangingBadge() {
     };
     frameRef.current = requestAnimationFrame(tick);
     return () => cancelAnimationFrame(frameRef.current);
+  }, []);
+
+  useEffect(() => {
+    const reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (reduce) {
+      setShowHint(false);
+      return;
+    }
+    const token = ++hintToken.current;
+    let frame = 0;
+    const start = performance.now() + 400;
+    const duration = 2400;
+    const pull = 52;
+    const tick = (now) => {
+      if (token !== hintToken.current || dragRef.current) return;
+      const elapsed = now - start;
+      if (elapsed < 0) {
+        frame = requestAnimationFrame(tick);
+        return;
+      }
+      if (elapsed >= duration) {
+        applyOffset({ x: 0, y: 0 });
+        setShowHint(false);
+        return;
+      }
+      const cycle = 1100;
+      const phase = (elapsed % cycle) / cycle;
+      const active = elapsed < cycle * 2;
+      let y = 0;
+      if (active && phase < 0.42) y = pull * Math.sin((phase / 0.42) * (Math.PI / 2));
+      else if (active && phase < 0.78) y = pull * (1 - (phase - 0.42) / 0.36);
+      applyOffset({ x: 0, y });
+      const hand = handRef.current;
+      if (hand) {
+        const fadeIn = Math.min(1, elapsed / 180);
+        const fadeOut = Math.min(1, (duration - elapsed) / 320);
+        hand.style.opacity = String(Math.min(fadeIn, fadeOut));
+      }
+      frame = requestAnimationFrame(tick);
+    };
+    frame = requestAnimationFrame(tick);
+    return () => {
+      hintToken.current += 1;
+      cancelAnimationFrame(frame);
+    };
   }, []);
 
   const springHome = (from) => {
@@ -76,6 +132,8 @@ function HangingBadge() {
 
   const onPointerDown = (event) => {
     event.preventDefault();
+    hintToken.current += 1;
+    setShowHint(false);
     cancelAnimationFrame(springRef.current);
     try {
       event.currentTarget.setPointerCapture(event.pointerId);
@@ -117,14 +175,18 @@ function HangingBadge() {
 
   return (
     <div className="hero-badge">
+      <span id="badge-anchor" className="badge-anchor" aria-hidden="true" />
       <div ref={bandRef} className="badge-band" aria-hidden="true" />
       <div className="id-card-stage">
-      <article
-        className={`id-card${pulling ? " is-pulling" : ""}`}
+      <div
+        className="id-card-mover"
         style={{
           transform: `translate3d(${offset.x}px, ${offset.y}px, 0) rotateX(${4 + offset.y * 0.015}deg) rotateY(${offset.x * -0.035}deg) rotateZ(${offset.x * 0.012}deg)`,
           transformOrigin: "top center",
         }}
+      >
+      <article
+        className={`id-card${pulling ? " is-pulling" : ""}`}
         onPointerDown={onPointerDown}
         onPointerMove={onPointerMove}
         onPointerUp={endDrag}
@@ -168,6 +230,14 @@ function HangingBadge() {
         </div>
         <p className="id-card-role">Dev & Ops</p>
       </article>
+        {showHint ? (
+          <span ref={handRef} className="badge-hint" aria-hidden="true">
+            <svg viewBox="0 0 64 64">
+              <path d="M24 8c-2.4 0-4 1.8-4 4.2V28c-2.2-1.6-5.4-1.2-7 1-1.6 2.2-1.2 5.2 1 6.8l12.6 10.2c2.2 1.8 5 2.8 8 2.8h4.2c6.4 0 11.2-4.6 11.2-11.2V24.5c0-2.2-1.8-4-4-4s-4 1.8-4 4v-2.2c0-2.2-1.8-4-4-4s-4 1.8-4 4V25c0-2.2-1.8-4-4-4s-4 1.8-4 4V12.2c0-2.4-1.6-4.2-4-4.2Z" />
+            </svg>
+          </span>
+        ) : null}
+      </div>
       </div>
     </div>
   );

@@ -13,12 +13,14 @@ const categorizedStacks = stackCategories.map((category) => ({
 import HomePageLayout from "../layouts/HomePageLayout.astro";
 import TechStack from "../layouts/TechStack.astro";
 import About from "../components/About";
+import ViewportSnake from "../components/ViewportSnake";
 import { Image } from "astro:assets";
 import Contact from "../layouts/Contact.astro";
 import Card from "../components/contact/Card";
 ---
 
 <HomePageLayout url="Portfolio" title={SITE_NAME}>
+  <ViewportSnake client:load />
   <About client:load />
   <TechStack>
     {
