@@ -3,23 +3,14 @@ import { HERO_NAME_LINES, SITE_NAME } from "../site.config";
 const About = () => {
   return (
     <section className="about-section section-wrap">
-      <div className="hero-grid">
+      <div className="hero-layout">
         <div className="hero-copy">
           <p className="eyebrow">Portfolio / 2024—present</p>
-          <div className="hero-title-row">
-            <h1>
-              {HERO_NAME_LINES[0]}
-              <br />
-              <span>{HERO_NAME_LINES[1]}</span>
-            </h1>
-            <div className="hero-portrait">
-              <img src="/profilex.png" alt={SITE_NAME} />
-              <span className="portrait-label">
-                Development
-                <br />& Operations
-              </span>
-            </div>
-          </div>
+          <h1>
+            {HERO_NAME_LINES[0]}
+            <br />
+            <span>{HERO_NAME_LINES[1]}</span>
+          </h1>
           <p className="hero-summary">
             <span className="hero-summary-line">
               I <span className="hl hl-marker-acid">ship code</span>,
@@ -31,10 +22,17 @@ const About = () => {
               <span className="hl hl-marker-acid">tech</span>.
             </span>
           </p>
-          <a className="lime-link" href="#about">
-            Scroll to explore <span>↓</span>
-          </a>
         </div>
+        <div className="hero-portrait">
+          <img src="/profilex.png" alt={SITE_NAME} />
+          <span className="portrait-label">
+            Development
+            <br />& Operations
+          </span>
+        </div>
+        <a className="lime-link" href="#about">
+          Scroll to explore <span>↓</span>
+        </a>
       </div>
 
       <div id="about" className="about-copy section-rule">
