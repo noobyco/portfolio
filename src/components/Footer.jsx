@@ -1,10 +1,12 @@
+import { SITE_NAME } from "../site.config";
+
 const Footer = () => {
   return (
     <footer className="site-footer">
       <p>© 2026</p>
       <h1>
         <a href="https://twitter.com/noobyco" target="_blank" rel="noreferrer">
-          shekh md moinuddin ↗
+          {SITE_NAME} ↗
         </a>
       </h1>
       <p className="footer-note">
