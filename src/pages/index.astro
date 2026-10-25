@@ -19,7 +19,7 @@ import Card from "../components/contact/Card";
 ---
 
 <HomePageLayout url="Portfolio" title={SITE_NAME}>
-  <About />
+  <About client:load />
   <TechStack>
     {
       categorizedStacks.map(({ category, stacks }) => (
