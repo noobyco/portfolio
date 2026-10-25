@@ -8,6 +8,7 @@ const Navbar = (props) => {
 
   return (
     <nav className="site-nav">
+      <span id="badge-anchor" className="badge-anchor" aria-hidden="true" />
       <div className="brand-lockup">
         <a href="/" className="brand-mark">
           {SITE_INITIALS}
