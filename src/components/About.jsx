@@ -226,7 +226,9 @@ function HangingBadge() {
           <rect x="148" y="328" width="10" height="6" />
         </svg>
         <div className="id-card-window">
-          <img src="/profilex.jpg" alt={SITE_NAME} draggable="false" />
+          <div className="id-card-photo">
+            <img src="/badge-portrait.png" alt={SITE_NAME} draggable="false" />
+          </div>
         </div>
         <p className="id-card-role">Dev & Ops</p>
       </article>
