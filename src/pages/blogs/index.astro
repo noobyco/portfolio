@@ -1,0 +1,25 @@
+---
+import { SITE_NAME } from "../../site.config";
+import HomePageLayout from "../../layouts/HomePageLayout.astro";
+---
+
+<HomePageLayout url="Blogs" title={`Blogs | ${SITE_NAME}`}>
+  <section class="listing-page blog-status-page">
+    <p class="section-kicker">Blogs / In the works</p>
+    <div class="blog-status-card">
+      <div class="blog-status-mark" aria-hidden="true">B.</div>
+      <div class="blog-status-copy">
+        <p class="blog-status-label"><span></span> Work in progress</p>
+        <h1>Good ideas take a little time.</h1>
+        <p>
+          The blog is being put together right now. Check back soon for notes,
+          experiments, and stories from things I’m building.
+        </p>
+        <a class="blog-status-link" href="/">
+          Back to the portfolio <span aria-hidden="true">↗</span>
+        </a>
+      </div>
+      <span class="blog-status-index" aria-hidden="true">001 / SOON</span>
+    </div>
+  </section>
+</HomePageLayout>
