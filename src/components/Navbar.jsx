@@ -21,9 +21,7 @@ const Navbar = (props) => {
         <a href="/">About</a>
         <a href="/projects">Projects</a>
         <a href="/talks">Talks</a>
-        <a href="https://blog.noobyco.site/" target="_blank" rel="noreferrer">
-          Blogs
-        </a>
+        <a href="/blogs">Blogs</a>
       </div>
 
       <div className="mobile-toggle">
@@ -39,9 +37,7 @@ const Navbar = (props) => {
           <a href="/">About</a>
           <a href="/projects">Projects</a>
           <a href="/talks">Talks</a>
-          <a href="https://blog.noobyco.site/" target="_blank" rel="noreferrer">
-            Blogs
-          </a>
+          <a href="/blogs">Blogs</a>
         </div>
       ) : null}
     </nav>
