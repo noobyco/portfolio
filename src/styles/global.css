@@ -279,13 +279,17 @@ a {
 .id-card-traces path {
   fill: none;
   stroke: #b6f25a;
-  stroke-width: 1.35;
+  stroke-width: 1.2;
   stroke-linejoin: miter;
   stroke-linecap: square;
 }
-.id-card-traces circle,
-.id-card-traces rect {
+.id-card-traces .trace-pads rect {
   fill: #b6f25a;
+}
+.id-card-traces .trace-vias circle {
+  fill: #0c0c0c;
+  stroke: #b6f25a;
+  stroke-width: 1.2;
 }
 .id-card.is-pulling {
   cursor: grabbing;

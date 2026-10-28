@@ -197,33 +197,69 @@ function HangingBadge() {
         <span className="badge-clip" aria-hidden="true" />
         <span className="badge-clip" aria-hidden="true" />
         <svg className="id-card-traces" viewBox="0 0 220 340" preserveAspectRatio="none" aria-hidden="true">
-          <path d="M10 12 H58 L76 28 H118 V14 H168 L190 28 H210" />
-          <path d="M14 40 H42 V22 H78 L96 40 H132 V18 H160 V40 H196" />
-          <path d="M12 58 H36 L52 42 H88 V58 H124 L142 42 H178 V58 H208" />
-          <path d="M10 16 V70 H24 V110 H12 V160 H26 V210 H10 V270 H24 V310" />
-          <path d="M210 16 V64 H196 V108 H210 V158 H194 V208 H210 V268 H196 V312" />
-          <path d="M28 78 V118 H14 V148 H30 V188 H16 V228 H32 V268" />
-          <path d="M192 82 V124 H206 V154 H188 V198 H206 V238 H190 V278" />
-          <path d="M18 286 H52 L70 304 H108 V286 H150 L168 304 H202" />
-          <path d="M24 312 H48 V296 H80 L98 314 H140 V296 H172 L190 314 H206" />
-          <path d="M40 328 H72 V316 H110 V330 H148 V316 H184 V330" />
-          <circle cx="10" cy="12" r="2.4" />
-          <circle cx="210" cy="12" r="2.4" />
-          <circle cx="14" cy="40" r="2.2" />
-          <circle cx="196" cy="40" r="2.2" />
-          <circle cx="12" cy="58" r="2.2" />
-          <circle cx="208" cy="58" r="2.2" />
-          <circle cx="10" cy="160" r="2.2" />
-          <circle cx="210" cy="158" r="2.2" />
-          <circle cx="10" cy="270" r="2.2" />
-          <circle cx="210" cy="268" r="2.2" />
-          <circle cx="18" cy="286" r="2.2" />
-          <circle cx="202" cy="286" r="2.2" />
-          <circle cx="40" cy="328" r="2.2" />
-          <circle cx="184" cy="330" r="2.2" />
-          <rect x="72" y="328" width="10" height="6" />
-          <rect x="110" y="328" width="10" height="6" />
-          <rect x="148" y="328" width="10" height="6" />
+          <g className="trace-bus">
+            <path d="M12 18 H50 L64 32 H94" />
+            <path d="M12 24 H47 L61 38 H94" />
+            <path d="M12 30 H44 L58 44 H94" />
+            <path d="M126 32 H156 L170 18 H208" />
+            <path d="M126 38 H159 L173 24 H208" />
+            <path d="M126 44 H162 L176 30 H208" />
+
+            <path d="M14 70 V102 H26 V154 H14 V188" />
+            <path d="M20 70 V102 H32 V154 H20 V188" />
+            <path d="M26 70 V102 H38 V154 H26 V188" />
+            <path d="M206 70 V102 H194 V154 H206 V188" />
+            <path d="M200 70 V102 H188 V154 H200 V188" />
+            <path d="M194 70 V102 H182 V154 H194 V188" />
+
+            <path d="M14 294 V270 H26 V222 H14 V202" />
+            <path d="M20 294 V270 H32 V222 H20 V202" />
+            <path d="M26 294 V270 H38 V222 H26 V202" />
+            <path d="M206 294 V270 H194 V222 H206 V202" />
+            <path d="M200 294 V270 H188 V222 H200 V202" />
+            <path d="M194 294 V270 H182 V222 H194 V202" />
+
+            <path d="M12 322 H50 L64 308 H94" />
+            <path d="M12 316 H47 L61 302 H94" />
+            <path d="M12 310 H44 L58 296 H94" />
+            <path d="M126 308 H156 L170 322 H208" />
+            <path d="M126 302 H159 L173 316 H208" />
+            <path d="M126 296 H162 L176 310 H208" />
+          </g>
+          <g className="trace-pads">
+            <rect x="8" y="15" width="7" height="6" />
+            <rect x="8" y="21" width="7" height="6" />
+            <rect x="8" y="27" width="7" height="6" />
+            <rect x="205" y="15" width="7" height="6" />
+            <rect x="205" y="21" width="7" height="6" />
+            <rect x="205" y="27" width="7" height="6" />
+            <rect x="10" y="185" width="8" height="6" />
+            <rect x="16" y="185" width="8" height="6" />
+            <rect x="22" y="185" width="8" height="6" />
+            <rect x="202" y="185" width="8" height="6" />
+            <rect x="196" y="185" width="8" height="6" />
+            <rect x="190" y="185" width="8" height="6" />
+            <rect x="8" y="319" width="7" height="6" />
+            <rect x="8" y="313" width="7" height="6" />
+            <rect x="8" y="307" width="7" height="6" />
+            <rect x="205" y="319" width="7" height="6" />
+            <rect x="205" y="313" width="7" height="6" />
+            <rect x="205" y="307" width="7" height="6" />
+          </g>
+          <g className="trace-vias">
+            <circle cx="26" cy="102" r="2.4" />
+            <circle cx="32" cy="102" r="2.4" />
+            <circle cx="38" cy="102" r="2.4" />
+            <circle cx="194" cy="102" r="2.4" />
+            <circle cx="188" cy="102" r="2.4" />
+            <circle cx="182" cy="102" r="2.4" />
+            <circle cx="26" cy="270" r="2.4" />
+            <circle cx="32" cy="270" r="2.4" />
+            <circle cx="38" cy="270" r="2.4" />
+            <circle cx="194" cy="270" r="2.4" />
+            <circle cx="188" cy="270" r="2.4" />
+            <circle cx="182" cy="270" r="2.4" />
+          </g>
         </svg>
         <div className="id-card-window">
           <div className="id-card-photo">
