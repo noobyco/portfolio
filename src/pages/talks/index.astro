@@ -13,15 +13,15 @@ import TalkCard from "../../components/talk/TalkCard";
     </div>
     <div class="listing-grid">
       {
-        allTalks.map((talk) => (
+        allTalks.map((talk, index) => (
           <TalkCard
+            index={index}
             image={talk.frontmatter.image}
             title={talk.frontmatter.title}
             blogUrl={talk.frontmatter.blogUrl}
             videoUrl={talk.frontmatter.videoUrl}
             postUrl={talk.frontmatter.postUrl}
             pptUrl={talk.frontmatter.pptUrl}
-            client:load
           />
         ))
       }

@@ -221,10 +221,7 @@ a {
   transform-origin: 0 50%;
   pointer-events: none;
   border-radius: 7px;
-  background:
-    linear-gradient(#d8ff3e, #d8ff3e) center 4px / 100% 1.5px no-repeat,
-    linear-gradient(#d8ff3e, #d8ff3e) center 9px / 100% 1.5px no-repeat,
-    #143024;
+  background: #143024;
   box-shadow: inset 0 0 0 1px #1e4a32;
 }
 .badge-clip {
@@ -583,65 +580,101 @@ a {
   color: #696861;
 }
 .listing-page {
-  width: min(1180px, 90vw);
+  width: min(1200px, 92vw);
   margin: auto;
-  padding: 90px 0;
+  padding: clamp(56px, 8vw, 96px) 0;
 }
 .listing-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 14px;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 36px;
 }
 .project-card,
 .talk-card {
   position: relative;
   overflow: hidden;
-  border: 1px solid var(--ink);
-  background: rgba(255, 255, 255, 0.3);
-  transition:
-    transform 0.25s,
-    box-shadow 0.25s,
-    background 0.25s;
-}
-.project-card:hover,
-.talk-card:hover {
-  transform: translateY(-7px);
-  background: white;
-  box-shadow: 8px 8px 0 var(--acid);
+  min-height: 350px;
+  border: 1px solid #bcbab0;
+  border-radius: 4px;
+  background: #fffef9;
+  box-shadow: 0 4px 0 #e3e1d6;
+  display: grid;
+  grid-template-columns: minmax(0, 0.85fr) minmax(0, 1.15fr);
 }
 .talk-card {
-  border-color: var(--line);
-  box-shadow: 5px 5px 0 transparent;
+  --card-accent: var(--coral);
 }
 .card-media {
   position: relative;
-  height: 270px;
+  min-width: 0;
   overflow: hidden;
-  background: var(--ink);
+  border-right: 1px solid var(--line);
+  background: #e8e7de;
+}
+.project-card .card-media {
+  display: flex;
+  align-items: center;
+  padding: 66px 26px 32px;
+  background-image: radial-gradient(#b9b8ae 0.7px, transparent 0.7px);
+  background-size: 12px 12px;
 }
 .card-media img {
+  display: block;
   width: 100%;
+}
+.project-card .card-media img {
+  height: auto;
+  max-height: 340px;
+  object-fit: contain;
+  border-radius: 2px;
+  box-shadow: 0 10px 24px #1414141a;
+  filter: brightness(1.06) contrast(1.03);
+}
+.talk-card .card-media img {
+  position: absolute;
+  inset: 0;
   height: 100%;
   object-fit: cover;
-  filter: grayscale(1) saturate(0.65);
-  transform: scale(1.01);
-  transition:
-    filter 0.5s,
-    transform 0.5s;
 }
-.project-card:hover .card-media img,
-.talk-card:hover .card-media img {
-  filter: grayscale(0) saturate(1.15);
-  transform: scale(1.06);
+.card-media-label {
+  position: absolute;
+  inset: 18px 20px auto;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  color: #4e4d48;
+  font: 10px "DM Mono", monospace;
+  letter-spacing: 0.08em;
+}
+.card-media-label span:last-child {
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  background: var(--card-accent, var(--acid));
+  color: var(--ink);
+  border: 1px solid #14141420;
+}
+.talk-card .card-media-label {
+  inset: auto 16px 16px;
+  padding: 8px 8px 8px 12px;
+  color: white;
+  background: #141414ed;
 }
 .card-body {
-  padding: 24px;
+  min-width: 0;
+  padding: clamp(26px, 3.5vw, 40px);
+  display: flex;
+  flex-direction: column;
 }
 .card-meta {
   display: flex;
   justify-content: space-between;
+  flex-wrap: wrap;
   gap: 12px;
-  color: var(--muted);
+  align-items: center;
+  color: #626158;
   font:
     10px "DM Mono",
     monospace;
@@ -649,11 +682,13 @@ a {
   text-transform: uppercase;
 }
 .card-heading {
-  margin: 18px 0 14px;
-  font-size: clamp(28px, 3vw, 38px);
-  line-height: 0.95;
-  letter-spacing: -0.05em;
+  margin: 22px 0 18px;
+  font-size: clamp(29px, 3vw, 40px);
+  line-height: 1.12;
+  letter-spacing: -0.045em;
   font-weight: 500;
+  overflow-wrap: break-word;
+  text-wrap: balance;
 }
 .card-title {
   display: flex;
@@ -661,48 +696,81 @@ a {
   justify-content: space-between;
   gap: 12px;
 }
-.card-description {
+.project-description {
+  margin: 0;
+  min-width: 0;
   color: #4e4d48;
-  line-height: 1.5;
+  font-size: 15px;
+  line-height: 1.75;
+  overflow-wrap: break-word;
+  text-wrap: pretty;
 }
 .status-chip {
-  padding: 4px 6px;
-  background: var(--acid);
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 8px;
+  border: 1px solid #c8d1b0;
+  border-radius: 20px;
+  background: #f1f5e8;
+  color: #3c5026;
   font:
     10px "DM Mono",
     monospace;
   text-transform: uppercase;
 }
+.status-chip > span {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: #587438;
+}
+.card-resource-label {
+  margin: auto 0 0;
+  padding-top: 24px;
+  color: #626158;
+  font: 11px "DM Mono", monospace;
+}
 .card-actions {
   display: flex;
   flex-wrap: wrap;
-  gap: 7px;
-  margin-top: 24px;
+  gap: 10px 16px;
+  margin-top: auto;
+  padding-top: 24px;
+}
+.talk-card .card-actions {
+  margin-top: 0;
+  padding-top: 16px;
 }
 .card-action,
 .card-actions a {
-  padding: 9px 11px;
-  border: 1px solid var(--ink);
+  min-height: 44px;
+  padding: 10px 14px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
   display: inline-flex;
   align-items: center;
   gap: 8px;
   font:
-    11px "DM Mono",
+    10px "DM Mono",
     monospace;
   text-transform: uppercase;
+}
+.card-actions .card-action-primary {
+  padding: 12px 14px;
+  background: var(--ink);
+  color: var(--card-accent, var(--acid));
+  border-color: var(--ink);
+  border-radius: 999px;
 }
 .card-action svg,
 .card-actions a svg {
   font-size: 13px;
-  transition: transform 0.2s;
+  flex-shrink: 0;
 }
-.card-action:hover svg,
-.card-actions a:hover svg {
-  transform: translateX(3px);
-}
-.card-actions a:hover {
-  background: var(--ink);
-  color: var(--acid);
+.card-actions a:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 5px;
 }
 .opensource-list {
   margin-top: 35px;
@@ -776,7 +844,14 @@ a {
 }
 @media (max-width: 700px) {
   .hero-badge {
-    margin-top: 4px;
+    justify-self: center;
+    margin: 72px auto 120px;
+  }
+  .hero-layout > .lime-link {
+    margin-top: 0;
+  }
+  .about-section .section-rule {
+    margin-top: 14px;
   }
   .desktop-links {
     display: none;
@@ -819,15 +894,44 @@ a {
   .content-section {
     padding: 70px 0;
   }
-  .stack-grid,
-  .listing-grid {
+  .stack-grid {
     grid-template-columns: 1fr;
+  }
+  .project-card,
+  .talk-card {
+    grid-template-columns: minmax(0, 1fr);
+    min-height: 0;
+  }
+  .card-media {
+    border-right: 0;
+    border-bottom: 1px solid var(--line);
+  }
+  .project-card .card-media {
+    padding: 62px 24px 28px;
+  }
+  .project-card .card-media img {
+    max-height: 260px;
+  }
+  .talk-card .card-media img {
+    position: static;
+    height: 100%;
+  }
+  .talk-card .card-media {
+    aspect-ratio: 4 / 3;
+  }
+  .card-body {
+    padding: clamp(20px, 5vw, 28px);
+  }
+  .card-heading {
+    margin: 18px 0 12px;
+    font-size: clamp(26px, 7vw, 34px);
+  }
+  .card-actions {
+    margin-top: 0;
+    padding-top: 24px;
   }
   .stack-category + .stack-category {
     margin-top: 40px;
-  }
-  .card-media {
-    height: 230px;
   }
   .contact-grid {
     grid-template-columns: repeat(2, 1fr);
@@ -852,6 +956,5 @@ a {
   }
   .hero-badge {
     width: clamp(156px, 52vw, 190px);
-    margin-top: 20px;
   }
 }

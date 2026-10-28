@@ -1,39 +1,24 @@
-import { MdArrowForwardIos } from "react-icons/md";
+import CardActions from "../CardActions";
 const TalkCard = (props) => {
   return (
     <article className="talk-card">
       <div className="card-media">
-        <img src={"/talks/" + props.image} alt={`${props.title} preview`} />
+        <img src={"/talks/" + props.image} alt={`${props.title} session`} loading="lazy" decoding="async" />
+        <div className="card-media-label"><span>FROM THE STAGE</span><span>{String((props.index ?? 0) + 1).padStart(2, "0")}</span></div>
       </div>
       <div className="card-body">
         <div className="card-meta">
-          <span>Talk / Notes</span>
-          <span>Available online</span>
+          <span>Talks & workshops / {String((props.index ?? 0) + 1).padStart(2, "0")}</span>
         </div>
-        <h1 className="card-heading">{props.title}</h1>
+        <h2 className="card-heading">{props.title}</h2>
 
-        <div className="card-actions">
-          {props.blogUrl && (
-            <a href={props.blogUrl} target="_blank" className="">
-              Blog <MdArrowForwardIos className="ml-1" />
-            </a>
-          )}
-          {props.videoUrl && (
-            <a href={props.videoUrl} target="_blank" className="">
-              Video <MdArrowForwardIos className="ml-1" />
-            </a>
-          )}
-          {props.postUrl && (
-            <a href={props.postUrl} target="_blank" className="">
-              Post <MdArrowForwardIos className="ml-1" />
-            </a>
-          )}
-          {props.pptUrl && (
-            <a href={props.pptUrl} target="_blank" className="">
-              Slides <MdArrowForwardIos className="ml-1" />
-            </a>
-          )}
-        </div>
+        <p className="card-resource-label">Continue the conversation</p>
+        <CardActions title={props.title} links={[
+          { url: props.videoUrl, label: "Watch talk" },
+          { url: props.pptUrl, label: "View slides" },
+          { url: props.blogUrl, label: "Read recap" },
+          { url: props.postUrl, label: "Event post" },
+        ]} />
       </div>
     </article>
   );
