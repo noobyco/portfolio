@@ -1,4 +1,4 @@
-import { MdArrowForwardIos } from "react-icons/md";
+import CardActions from "../CardActions";
 
 const ProjectCard = ({
   image,
@@ -8,45 +8,34 @@ const ProjectCard = ({
   projectUrl,
   videoUrl,
   status,
+  index = 0,
 }) => {
-  const descContentLength = 100;
-  const truncatedDescription =
-    description.length > descContentLength
-      ? `${description.slice(0, descContentLength)}...`
-      : description;
-
-  const renderLinkButton = (url, label) => (
-    <a
-      href={url}
-      target="_blank"
-      rel="noopener noreferrer"
-      className="card-action"
-    >
-      {label} <MdArrowForwardIos aria-hidden="true" />
-    </a>
-  );
-
   return (
     <article className="project-card">
       <div className="card-media">
-        <img src={`/project/${image}`} alt={`${title} preview`} />
+        <div className="card-media-label"><span>PROJECT FILE</span><span>{String(index + 1).padStart(2, "0")}</span></div>
+        <img src={`/project/${image}`} alt={`${title} preview`} loading="lazy" decoding="async" />
       </div>
       <div className="card-body">
         <div className="card-meta">
-          <span>Project / Selected work</span>
+          <span>Selected work / {String(index + 1).padStart(2, "0")}</span>
           {status ? (
-            <span className="status-chip">active</span>
-          ) : (
-            <span>Archive</span>
-          )}
+            <span className="status-chip">
+              <span aria-hidden="true" />
+              {status}
+            </span>
+          ) : null}
         </div>
-        <h1 className="card-heading">{title}</h1>
-        <p className="card-description">{truncatedDescription}</p>
-        <div className="card-actions">
-          {codebaseUrl && renderLinkButton(codebaseUrl, "Codebase")}
-          {projectUrl && renderLinkButton(projectUrl, "Project")}
-          {videoUrl && renderLinkButton(videoUrl, "Video")}
-        </div>
+        <h2 className="card-heading">{title}</h2>
+        <p className="project-description">{description}</p>
+        <CardActions
+          title={title}
+          links={[
+            { url: projectUrl, label: "Explore project" },
+            { url: codebaseUrl, label: "Source code" },
+            { url: videoUrl, label: "Watch demo" },
+          ]}
+        />
       </div>
     </article>
   );

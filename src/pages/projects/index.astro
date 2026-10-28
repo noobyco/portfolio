@@ -1,6 +1,11 @@
 ---
 import { SITE_NAME } from "../../site.config";
 const allProjects = await Astro.glob("../../content/projects/*.md");
+const excludedProjectTitles = new Set(["under the hood", "snooby", "gamex"]);
+const visibleProjects = allProjects.filter(
+  (project) =>
+    !excludedProjectTitles.has(project.frontmatter.title.trim().toLowerCase()),
+);
 import HomePageLayout from "../../layouts/HomePageLayout.astro";
 import ProjectCard from "../../components/project/ProjectCard";
 ---
@@ -13,8 +18,9 @@ import ProjectCard from "../../components/project/ProjectCard";
     </div>
     <div class="listing-grid">
       {
-        allProjects.map((project) => (
+        visibleProjects.map((project, index) => (
           <ProjectCard
+            index={index}
             title={project.frontmatter.title}
             description={project.frontmatter.description}
             image={project.frontmatter.image}
@@ -22,7 +28,6 @@ import ProjectCard from "../../components/project/ProjectCard";
             projectUrl={project.frontmatter.projectUrl}
             videoUrl={project.frontmatter.videoUrl}
             status={project.frontmatter.status}
-            client:load
           />
         ))
       }
